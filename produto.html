@@ -1,19 +1,24 @@
-<div style="margin-top:50px; text-align:left; max-width:800px; margin-left:auto; margin-right:auto;">
-  <h2 style="color:white;">💬 Comentários sobre as Juliet</h2>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
-  <script src="https://giscus.app/client.js"
-    data-repo="platinilupa/platini-lupas"
-    data-repo-id="COLE_AQUI_O_REPO_ID"
-    data-category="General"
-    data-category-id="COLE_AQUI_O_CATEGORY_ID"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="dark"
-    data-lang="pt"
-    crossorigin="anonymous"
-    async>
-  </script>
-</div>
+  const params = new URLSearchParams(window.location.search);
+
+  const nome = params.get("nome") || "Produto";
+  const desc = params.get("desc") || "Sem descrição";
+  const img = params.get("img") || 0;
+  const preco = params.get("preco") || "70";
+
+  document.getElementById("nome").innerText = nome;
+  document.getElementById("desc").innerText = desc;
+  document.getElementById("preco").innerText = "R$ " + preco;
+
+  document.getElementById("img").src =
+    "https://picsum.photos/seed/juliet" + img + "/600/400";
+
+  const msg = `Olá! Quero comprar a ${nome} por R$ ${preco}`;
+
+  document.getElementById("whats").href =
+    "https://wa.me/5512974040166?text=" + encodeURIComponent(msg);
+
+});
+</script>
