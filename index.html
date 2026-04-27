@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Platini Lupas</title>
+
+<!-- ÍCONE DA ABA -->
+<link rel="icon" type="image/png" href="https://i.imgur.com/6XKcV0Q.png">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0d0d0d;
+  color: white;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: black;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* CARD */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* efeito */
+.card::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+  background: rgba(255, 215, 0, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.card img,
+.card h3,
+.card p {
+  position: relative;
+  z-index: 2;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.preco {
+  color: gold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <!-- LOGO COM JULIET MELHORADA -->
+  <div class="logo">
+
+    <svg width="90" height="35" viewBox="0 0 140 60" fill="none">
+
+      <!-- lente esquerda -->
+      <rect x="5" y="15" width="55" height="30" rx="12"
+        stroke="#2aa8ff" stroke-width="4"
+        fill="rgba(42,168,255,0.25)"/>
+
+      <!-- lente direita -->
+      <rect x="80" y="15" width="55" height="30" rx="12"
+        stroke="#2aa8ff" stroke-width="4"
+        fill="rgba(42,168,255,0.25)"/>
+
+      <!-- ponte -->
+      <rect x="60" y="25" width="20" height="6" rx="3"
+        fill="#2aa8ff"/>
+
+      <!-- brilho -->
+      <circle cx="25" cy="25" r="4" fill="white" opacity="0.8"/>
+      <circle cx="110" cy="25" r="4" fill="white" opacity="0.8"/>
+
+    </svg>
+
+    <h1 style="
+      color:white;
+      font-family:Arial Black;
+      font-size:20px;
+      margin:0;
+      letter-spacing:2px;
+    ">
+      PLATINI LUPAS
+    </h1>
+
+  </div>
+
+  <p style="margin:0;color:white;font-family:Arial;">
+    Escolha sua Juliet 👇
+  </p>
+
+</header>
+
+<section class="grid" id="grid"></section>
+
+<script>
+const produtos = [
+  {nome:"Juliet Chrome", desc:"Lente espelhada com acabamento premium, perfeita pra quem quer destaque e visão limpa no dia a dia"},
+  {nome:"Juliet Black", desc:"Modelo discreto e versátil, combina com qualquer estilo e ocasião"},
+  {nome:"Juliet Gold", desc:"Visual chamativo e elegante, ideal pra quem gosta de presença"},
+  {nome:"Juliet Azul", desc:"Lente azul moderna, estilo diferenciado e confortável"},
+  {nome:"Juliet Vermelha", desc:"Design agressivo, perfeito pra quem quer se destacar"},
+  {nome:"Juliet Prata", desc:"Clássica e sofisticada, nunca sai de moda"},
+  {nome:"Juliet Dark", desc:"Estilo escuro e marcante, ideal pra qualquer rolê"},
+  {nome:"Juliet Ice", desc:"Visual claro e moderno, leve e estiloso"},
+  {nome:"Juliet Neon", desc:"Cor vibrante, chama atenção de longe"},
+  {nome:"Juliet Smoke", desc:"Lente fumê confortável para o dia a dia"},
+  {nome:"Juliet Polarizada", desc:"Proteção contra sol forte com mais conforto visual"},
+  {nome:"Juliet X", desc:"Modelo exclusivo com design diferenciado"},
+  {nome:"Juliet Pro", desc:"Linha avançada com acabamento superior"},
+  {nome:"Juliet Street", desc:"Estilo urbano, perfeita pra quem vive na rua"},
+  {nome:"Juliet Elite", desc:"Acabamento premium com visual sofisticado"},
+  {nome:"Juliet Vision", desc:"Alta nitidez e conforto visual"},
+  {nome:"Juliet Max", desc:"Modelo robusto com presença forte"},
+  {nome:"Juliet Classic", desc:"Modelo tradicional e confiável"},
+  {nome:"Juliet Braba", desc:"Visual pesado, estilo marcante"},
+  {nome:"Juliet Top", desc:"Uma das mais procuradas, sucesso de vendas"}
+];
+
+const grid = document.getElementById("grid");
+
+produtos.forEach((p, i) => {
+  const preco = 70 + (i % 3) * 5;
+
+  grid.innerHTML += `
+    <a class="card-link" href="produto.html?nome=${encodeURIComponent(p.nome)}&desc=${encodeURIComponent(p.desc)}&img=${i}&preco=${preco}">
+      <div class="card">
+        <img src="https://picsum.photos/seed/juliet${i}/600/400" alt="${p.nome}">
+        <h3>${p.nome}</h3>
+        <p>${p.desc}</p>
+        <p class="preco">R$ ${preco}</p>
+      </div>
+    </a>
+  `;
+});
+</script>
+
+</body>
+</html>
