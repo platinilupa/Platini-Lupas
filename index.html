@@ -2,10 +2,15 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>LUNEX</title>
+<title>Platini Lupas</title>
 
-<!-- FAVICON FORÇADO (resolve o problema da aba) -->
-<link rel="icon" type="image/png" href="https://i.imgur.com/6XKcV0Q.png?v=2">
+<!-- FAVICON EMBUTIDO (NUNCA DEPENDE DE LINK) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <rect x='10' y='35' width='35' height='20' rx='8' fill='%232aa8ff'/>
+  <rect x='55' y='35' width='35' height='20' rx='8' fill='%232aa8ff'/>
+  <rect x='40' y='42' width='20' height='6' rx='3' fill='white'/>
+</svg>">
 
 <style>
 body {
@@ -94,7 +99,7 @@ header {
 }
 
 .preco {
-  color: green;
+  color: gold;
 }
 </style>
 </head>
@@ -106,7 +111,7 @@ header {
   <!-- LOGO -->
   <div class="logo">
 
-    <!-- JULIET DESENHADA -->
+    <!-- JULIET SVG -->
     <svg width="90" height="35" viewBox="0 0 140 60" fill="none">
 
       <rect x="5" y="15" width="55" height="30" rx="12"
@@ -138,7 +143,7 @@ header {
   </div>
 
   <p style="margin:0;color:white;font-family:Arial;">
-    Escolha o seu óculos 👇
+    Escolha sua Juliet 👇
   </p>
 
 </header>
@@ -147,26 +152,26 @@ header {
 
 <script>
 const produtos = [
-  {nome:"Juliet Chrome", desc:"Lente espelhada com acabamento premium, perfeita pra quem quer destaque e visão limpa no dia a dia"},
-  {nome:"Juliet Black", desc:"Modelo discreto e versátil, combina com qualquer estilo e ocasião"},
-  {nome:"Juliet Gold", desc:"Visual chamativo e elegante, ideal pra quem gosta de presença"},
-  {nome:"Juliet Azul", desc:"Lente azul moderna, estilo diferenciado e confortável"},
-  {nome:"Juliet Vermelha", desc:"Design agressivo, perfeito pra quem quer se destacar"},
-  {nome:"Juliet Prata", desc:"Clássica e sofisticada, nunca sai de moda"},
-  {nome:"Juliet Dark", desc:"Estilo escuro e marcante, ideal pra qualquer rolê"},
-  {nome:"Juliet Ice", desc:"Visual claro e moderno, leve e estiloso"},
-  {nome:"Juliet Neon", desc:"Cor vibrante, chama atenção de longe"},
-  {nome:"Juliet Smoke", desc:"Lente fumê confortável para o dia a dia"},
-  {nome:"Juliet Polarizada", desc:"Proteção contra sol forte com mais conforto visual"},
-  {nome:"Juliet X", desc:"Modelo exclusivo com design diferenciado"},
-  {nome:"Juliet Pro", desc:"Linha avançada com acabamento superior"},
-  {nome:"Juliet Street", desc:"Estilo urbano, perfeita pra quem vive na rua"},
-  {nome:"Juliet Elite", desc:"Acabamento premium com visual sofisticado"},
-  {nome:"Juliet Vision", desc:"Alta nitidez e conforto visual"},
-  {nome:"Juliet Max", desc:"Modelo robusto com presença forte"},
-  {nome:"Juliet Classic", desc:"Modelo tradicional e confiável"},
-  {nome:"Juliet Braba", desc:"Visual pesado, estilo marcante"},
-  {nome:"Juliet Top", desc:"Uma das mais procuradas, sucesso de vendas"}
+  {nome:"Juliet Chrome", desc:"Lente espelhada com acabamento premium"},
+  {nome:"Juliet Black", desc:"Modelo discreto e versátil"},
+  {nome:"Juliet Gold", desc:"Visual chamativo e elegante"},
+  {nome:"Juliet Azul", desc:"Lente azul moderna e confortável"},
+  {nome:"Juliet Vermelha", desc:"Design agressivo"},
+  {nome:"Juliet Prata", desc:"Clássica e sofisticada"},
+  {nome:"Juliet Dark", desc:"Estilo escuro e marcante"},
+  {nome:"Juliet Ice", desc:"Visual claro e moderno"},
+  {nome:"Juliet Neon", desc:"Cor vibrante"},
+  {nome:"Juliet Smoke", desc:"Lente fumê confortável"},
+  {nome:"Juliet Polarizada", desc:"Proteção solar"},
+  {nome:"Juliet X", desc:"Modelo exclusivo"},
+  {nome:"Juliet Pro", desc:"Linha avançada"},
+  {nome:"Juliet Street", desc:"Estilo urbano"},
+  {nome:"Juliet Elite", desc:"Acabamento premium"},
+  {nome:"Juliet Vision", desc:"Alta nitidez"},
+  {nome:"Juliet Max", desc:"Modelo robusto"},
+  {nome:"Juliet Classic", desc:"Tradicional"},
+  {nome:"Juliet Braba", desc:"Visual forte"},
+  {nome:"Juliet Top", desc:"Mais vendida"}
 ];
 
 const grid = document.getElementById("grid");
@@ -177,7 +182,7 @@ produtos.forEach((p, i) => {
   grid.innerHTML += `
     <a class="card-link" href="produto.html?nome=${encodeURIComponent(p.nome)}&desc=${encodeURIComponent(p.desc)}&img=${i}&preco=${preco}">
       <div class="card">
-        <img src="https://picsum.photos/seed/juliet${i}/600/400" alt="${p.nome}">
+        <img src="https://picsum.photos/seed/juliet${i}/600/400">
         <h3>${p.nome}</h3>
         <p>${p.desc}</p>
         <p class="preco">R$ ${preco}</p>
