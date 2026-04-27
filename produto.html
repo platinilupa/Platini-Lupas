@@ -1,24 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Produto</title>
+
+<style>
+body {
+  background: #0d0d0d;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  margin: 0;
+}
+
+.container {
+  padding: 20px;
+}
+
+img {
+  width: 90%;
+  max-width: 400px;
+  margin-top: 20px;
+  border-radius: 12px;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+.desc {
+  color: #ccc;
+  margin: 15px 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.preco {
+  font-size: 28px;
+  color: gold;
+  margin: 10px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: gold;
+  color: black;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.voltar {
+  display: block;
+  margin-top: 20px;
+  color: white;
+  text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1 id="nome"></h1>
+
+  <p class="desc" id="desc"></p>
+
+  <img id="img">
+
+  <p class="preco" id="preco"></p>
+
+  <a id="whats" class="btn" href="#">Comprar no WhatsApp</a>
+
+  <a class="voltar" href="index.html">⬅ Voltar</a>
+
+</div>
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+const params = new URLSearchParams(window.location.search);
 
-  const params = new URLSearchParams(window.location.search);
+document.getElementById("nome").innerText = params.get("nome");
+document.getElementById("desc").innerText = params.get("desc");
+document.getElementById("preco").innerText = "R$ " + params.get("preco");
 
-  const nome = params.get("nome") || "Produto";
-  const desc = params.get("desc") || "Sem descrição";
-  const img = params.get("img") || 0;
-  const preco = params.get("preco") || "70";
+document.getElementById("img").src =
+"https://picsum.photos/seed/juliet" + params.get("img") + "/600/400";
 
-  document.getElementById("nome").innerText = nome;
-  document.getElementById("desc").innerText = desc;
-  document.getElementById("preco").innerText = "R$ " + preco;
-
-  document.getElementById("img").src =
-    "https://picsum.photos/seed/juliet" + img + "/600/400";
-
-  const msg = `Olá! Quero comprar a ${nome} por R$ ${preco}`;
-
-  document.getElementById("whats").href =
-    "https://wa.me/5512974040166?text=" + encodeURIComponent(msg);
-
-});
+document.getElementById("whats").href =
+"https://wa.me/5512974040166?text=" +
+encodeURIComponent("Olá! Quero comprar a " + params.get("nome") + " por R$ " + params.get("preco"));
 </script>
+
+</body>
+</html>
