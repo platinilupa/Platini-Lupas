@@ -2,194 +2,167 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Platini Lupas</title>
-
-<!-- FAVICON EMBUTIDO (NUNCA DEPENDE DE LINK) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-  <rect x='10' y='35' width='35' height='20' rx='8' fill='%232aa8ff'/>
-  <rect x='55' y='35' width='35' height='20' rx='8' fill='%232aa8ff'/>
-  <rect x='40' y='42' width='20' height='6' rx='3' fill='white'/>
-</svg>">
+<title>Produto</title>
 
 <style>
 body {
-  margin: 0;
-  font-family: Arial;
   background: #0d0d0d;
   color: white;
-}
-
-/* HEADER */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  background: black;
-}
-
-/* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-/* CARD */
-.card-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.card {
-  background: #1a1a1a;
-  border-radius: 10px;
+  font-family: Arial;
+  margin: 0;
   text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
 }
 
-/* efeito */
-.card::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  top: 50%;
-  left: 50%;
-  background: rgba(255, 215, 0, 0.15);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s ease, height 0.4s ease;
-  z-index: 0;
-  pointer-events: none;
+/* imagem */
+img {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.2);
 }
 
-.card:hover::before {
-  width: 300px;
-  height: 300px;
+/* nome */
+h1 {
+  margin-top: 20px;
+  font-size: 28px;
 }
 
-.card img,
-.card h3,
-.card p {
-  position: relative;
-  z-index: 2;
+/* descrição */
+.desc {
+  color: #ccc;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 10px;
+/* preço antigo */
+.old-price {
+  font-size: 18px;
+  color: #aaa;
+  text-decoration: line-through;
+  margin: 5px 0;
 }
 
+/* preço novo */
 .preco {
+  font-size: 30px;
   color: gold;
+  font-weight: bold;
+  margin: 5px 0 15px 0;
+}
+
+/* botão */
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: gold;
+  color: black;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* voltar */
+.voltar {
+  display: block;
+  margin-top: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+/* caixas */
+.box {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* estrelas */
+.stars {
+  color: gold;
+  font-size: 18px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="container">
 
-  <!-- LOGO -->
-  <div class="logo">
+  <h1 id="nome"></h1>
 
-    <!-- JULIET SVG -->
-    <svg width="90" height="35" viewBox="0 0 140 60" fill="none">
+  <div class="stars">⭐⭐⭐⭐⭐ (4.8/5 avaliações)</div>
 
-      <rect x="5" y="15" width="55" height="30" rx="12"
-        stroke="#2aa8ff" stroke-width="4"
-        fill="rgba(42,168,255,0.25)"/>
+  <img id="img">
 
-      <rect x="80" y="15" width="55" height="30" rx="12"
-        stroke="#2aa8ff" stroke-width="4"
-        fill="rgba(42,168,255,0.25)"/>
+  <!-- PREÇO PROMOÇÃO -->
+  <p class="old-price">R$ 199</p>
+  <p class="preco" id="preco"></p>
 
-      <rect x="60" y="25" width="20" height="6" rx="3"
-        fill="#2aa8ff"/>
+  <p class="desc" id="desc"></p>
 
-      <circle cx="25" cy="25" r="4" fill="white" opacity="0.8"/>
-      <circle cx="110" cy="25" r="4" fill="white" opacity="0.8"/>
-
-    </svg>
-
-    <h1 style="
-      color:white;
-      font-family:Arial Black;
-      font-size:20px;
-      margin:0;
-      letter-spacing:2px;
-    ">
-      PLATINI LUPAS
-    </h1>
-
+  <!-- DETALHES -->
+  <div class="box">
+    <h3>🕶️ Detalhes do produto</h3>
+    <p>✔ Lente resistente e confortável</p>
+    <p>✔ Proteção UV contra o sol ☀️</p>
+    <p>✔ Estilo Juliet premium de alta qualidade</p>
+    <p>✔ Acabamento moderno e elegante</p>
   </div>
 
-  <p style="margin:0;color:white;font-family:Arial;">
-    Escolha sua Juliet 👇
-  </p>
+  <!-- ENTREGA -->
+  <div class="box">
+    <h3>🚚 Entrega e envio</h3>
+    <p>📦 Envio rápido</p>
+    <p>⏱️ Prazo de entrega: de <b>3 a 10 dias úteis</b></p>
+    <p>🔒 Produto bem embalado e protegido</p>
+  </div>
 
-</header>
+  <!-- SEGURANÇA -->
+  <div class="box">
+    <h3>⭐ Garantia e segurança</h3>
+    <p>✔ Produto testado antes do envio</p>
+    <p>✔ Garantia contra defeitos</p>
+    <p>✔ Compra segura via WhatsApp</p>
+  </div>
 
-<section class="grid" id="grid"></section>
+  <a id="whats" class="btn">Comprar no WhatsApp</a>
+
+  <a class="voltar" href="index.html">⬅ Voltar</a>
+
+</div>
 
 <script>
-const produtos = [
-  {nome:"Juliet Chrome", desc:"Lente espelhada com acabamento premium"},
-  {nome:"Juliet Black", desc:"Modelo discreto e versátil"},
-  {nome:"Juliet Gold", desc:"Visual chamativo e elegante"},
-  {nome:"Juliet Azul", desc:"Lente azul moderna e confortável"},
-  {nome:"Juliet Vermelha", desc:"Design agressivo"},
-  {nome:"Juliet Prata", desc:"Clássica e sofisticada"},
-  {nome:"Juliet Dark", desc:"Estilo escuro e marcante"},
-  {nome:"Juliet Ice", desc:"Visual claro e moderno"},
-  {nome:"Juliet Neon", desc:"Cor vibrante"},
-  {nome:"Juliet Smoke", desc:"Lente fumê confortável"},
-  {nome:"Juliet Polarizada", desc:"Proteção solar"},
-  {nome:"Juliet X", desc:"Modelo exclusivo"},
-  {nome:"Juliet Pro", desc:"Linha avançada"},
-  {nome:"Juliet Street", desc:"Estilo urbano"},
-  {nome:"Juliet Elite", desc:"Acabamento premium"},
-  {nome:"Juliet Vision", desc:"Alta nitidez"},
-  {nome:"Juliet Max", desc:"Modelo robusto"},
-  {nome:"Juliet Classic", desc:"Tradicional"},
-  {nome:"Juliet Braba", desc:"Visual forte"},
-  {nome:"Juliet Top", desc:"Mais vendida"}
-];
+const params = new URLSearchParams(window.location.search);
 
-const grid = document.getElementById("grid");
+const nome = params.get("nome");
+const desc = params.get("desc");
+const img = params.get("img");
+const preco = params.get("preco");
 
-produtos.forEach((p, i) => {
-  const preco = 70 + (i % 3) * 5;
+document.getElementById("nome").innerText = nome;
+document.getElementById("desc").innerText = desc;
 
-  grid.innerHTML += `
-    <a class="card-link" href="produto.html?nome=${encodeURIComponent(p.nome)}&desc=${encodeURIComponent(p.desc)}&img=${i}&preco=${preco}">
-      <div class="card">
-        <img src="https://picsum.photos/seed/juliet${i}/600/400">
-        <h3>${p.nome}</h3>
-        <p>${p.desc}</p>
-        <p class="preco">R$ ${preco}</p>
-      </div>
-    </a>
-  `;
-});
+// preço promocional
+document.getElementById("preco").innerText = "por R$ " + preco;
+
+// imagem
+document.getElementById("img").src =
+"https://picsum.photos/seed/juliet" + img + "/600/400";
+
+// whatsapp
+document.getElementById("whats").href =
+"https://wa.me/5512974040166?text=" +
+encodeURIComponent("Olá! Quero comprar a " + nome + " por R$ " + preco);
 </script>
 
 </body>
