@@ -41,11 +41,20 @@ h1 {
   line-height: 1.6;
 }
 
-/* preço */
+/* preço antigo */
+.old-price {
+  font-size: 18px;
+  color: #aaa;
+  text-decoration: line-through;
+  margin: 5px 0;
+}
+
+/* preço novo */
 .preco {
   font-size: 30px;
   color: gold;
-  margin: 15px 0;
+  font-weight: bold;
+  margin: 5px 0 15px 0;
 }
 
 /* botão */
@@ -96,6 +105,8 @@ h1 {
 
   <img id="img">
 
+  <!-- PREÇO -->
+  <p class="old-price">R$ 199</p>
   <p class="preco" id="preco"></p>
 
   <p class="desc" id="desc"></p>
@@ -134,16 +145,21 @@ h1 {
 <script>
 const params = new URLSearchParams(window.location.search);
 
-document.getElementById("nome").innerText = params.get("nome");
-document.getElementById("desc").innerText = params.get("desc");
-document.getElementById("preco").innerText = "R$ " + params.get("preco");
+const nome = params.get("nome");
+const desc = params.get("desc");
+const img = params.get("img");
+const preco = params.get("preco");
+
+document.getElementById("nome").innerText = nome;
+document.getElementById("desc").innerText = desc;
+document.getElementById("preco").innerText = "por R$ " + preco;
 
 document.getElementById("img").src =
-"https://picsum.photos/seed/juliet" + params.get("img") + "/600/400";
+"https://picsum.photos/seed/juliet" + img + "/600/400";
 
 document.getElementById("whats").href =
 "https://wa.me/5512974040166?text=" +
-encodeURIComponent("Olá! Quero comprar a " + params.get("nome") + " por R$ " + params.get("preco"));
+encodeURIComponent("Olá! Quero comprar a " + nome + " por R$ " + preco);
 </script>
 
 </body>
