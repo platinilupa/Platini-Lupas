@@ -9,55 +9,38 @@ body {
   background: #0d0d0d;
   color: white;
   font-family: Arial;
-  margin: 0;
   text-align: center;
+  margin: 0;
 }
 
 .container {
   padding: 20px;
-  max-width: 800px;
-  margin: auto;
 }
 
-/* imagem */
 img {
   width: 90%;
   max-width: 400px;
-  border-radius: 12px;
   margin-top: 20px;
-  box-shadow: 0 0 20px rgba(255,215,0,0.2);
+  border-radius: 12px;
 }
 
-/* nome */
 h1 {
   margin-top: 20px;
-  font-size: 28px;
 }
 
-/* descrição */
 .desc {
   color: #ccc;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-/* preço antigo */
-.old-price {
+  margin: 15px 0;
   font-size: 18px;
-  color: #aaa;
-  text-decoration: line-through;
-  margin: 5px 0;
+  line-height: 1.5;
 }
 
-/* preço novo */
 .preco {
-  font-size: 30px;
+  font-size: 28px;
   color: gold;
-  font-weight: bold;
-  margin: 5px 0 15px 0;
+  margin: 10px 0;
 }
 
-/* botão */
 .btn {
   display: inline-block;
   padding: 12px 20px;
@@ -69,27 +52,11 @@ h1 {
   margin-top: 15px;
 }
 
-/* voltar */
 .voltar {
   display: block;
   margin-top: 20px;
   color: white;
   text-decoration: none;
-}
-
-/* caixas */
-.box {
-  background: #1a1a1a;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 20px;
-  text-align: left;
-}
-
-/* estrelas */
-.stars {
-  color: gold;
-  font-size: 18px;
 }
 </style>
 </head>
@@ -100,40 +67,11 @@ h1 {
 
   <h1 id="nome"></h1>
 
-  <div class="stars">⭐⭐⭐⭐⭐ (4.8/5 avaliações)</div>
+  <p class="desc" id="desc"></p>
 
   <img id="img">
 
-  <!-- PREÇO PROMOÇÃO -->
-  <p class="old-price">R$ 199</p>
   <p class="preco" id="preco"></p>
-
-  <p class="desc" id="desc"></p>
-
-  <!-- DETALHES -->
-  <div class="box">
-    <h3>🕶️ Detalhes do produto</h3>
-    <p>✔ Lente resistente e confortável</p>
-    <p>✔ Proteção UV contra o sol ☀️</p>
-    <p>✔ Estilo Juliet premium de alta qualidade</p>
-    <p>✔ Acabamento moderno e elegante</p>
-  </div>
-
-  <!-- ENTREGA -->
-  <div class="box">
-    <h3>🚚 Entrega e envio</h3>
-    <p>📦 Envio rápido</p>
-    <p>⏱️ Prazo de entrega: de <b>3 a 10 dias úteis</b></p>
-    <p>🔒 Produto bem embalado e protegido</p>
-  </div>
-
-  <!-- SEGURANÇA -->
-  <div class="box">
-    <h3>⭐ Garantia e segurança</h3>
-    <p>✔ Produto testado antes do envio</p>
-    <p>✔ Garantia contra defeitos</p>
-    <p>✔ Compra segura via WhatsApp</p>
-  </div>
 
   <a id="whats" class="btn">Comprar no WhatsApp</a>
 
@@ -144,25 +82,21 @@ h1 {
 <script>
 const params = new URLSearchParams(window.location.search);
 
-const nome = params.get("nome");
-const desc = params.get("desc");
-const img = params.get("img");
-const preco = params.get("preco");
+document.getElementById("nome").innerText = params.get("nome");
+document.getElementById("desc").innerText = params.get("desc");
+document.getElementById("preco").innerText = "R$ " + params.get("preco");
 
-document.getElementById("nome").innerText = nome;
-document.getElementById("desc").innerText = desc;
-
-// preço promocional
-document.getElementById("preco").innerText = "por R$ " + preco;
-
-// imagem
 document.getElementById("img").src =
-"https://picsum.photos/seed/juliet" + img + "/600/400";
+"https://picsum.photos/seed/juliet" + params.get("img") + "/600/400";
 
-// whatsapp
 document.getElementById("whats").href =
 "https://wa.me/5512974040166?text=" +
-encodeURIComponent("Olá! Quero comprar a " + nome + " por R$ " + preco);
+encodeURIComponent(
+"Olá! Quero comprar a " +
+params.get("nome") +
+" por R$ " +
+params.get("preco")
+);
 </script>
 
 </body>
