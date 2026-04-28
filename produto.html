@@ -25,36 +25,27 @@ img {
   max-width: 400px;
   border-radius: 12px;
   margin-top: 20px;
-  box-shadow: 0 0 20px rgba(255,215,0,0.2);
 }
 
 /* nome */
 h1 {
   margin-top: 20px;
-  font-size: 28px;
 }
 
 /* descrição */
 .desc {
   color: #ccc;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-/* preço antigo */
-.old-price {
+  margin: 15px 0;
   font-size: 18px;
-  color: #aaa;
-  text-decoration: line-through;
-  margin: 5px 0;
+  line-height: 1.5;
 }
 
-/* preço novo */
+/* preço */
 .preco {
-  font-size: 30px;
+  font-size: 28px;
   color: gold;
   font-weight: bold;
-  margin: 5px 0 15px 0;
+  margin: 10px 0;
 }
 
 /* botão */
@@ -84,7 +75,6 @@ h1 {
   border-radius: 10px;
   margin-top: 20px;
   text-align: left;
-  box-shadow: 0 0 10px rgba(255,255,255,0.05);
 }
 
 /* estrelas */
@@ -105,8 +95,6 @@ h1 {
 
   <img id="img">
 
-  <!-- PREÇO -->
-  <p class="old-price">R$ 199</p>
   <p class="preco" id="preco"></p>
 
   <p class="desc" id="desc"></p>
@@ -147,16 +135,37 @@ const params = new URLSearchParams(window.location.search);
 
 const nome = params.get("nome");
 const desc = params.get("desc");
-const img = params.get("img");
-const preco = params.get("preco");
+const img = parseInt(params.get("img")) || 0;
 
+/* 🔥 PREÇO SEMPRE ABAIXO DE 199 */
+let preco;
+
+if (img % 5 === 0) {
+  preco = 79;
+} 
+else if (img % 4 === 0) {
+  preco = 99;
+} 
+else if (img % 3 === 0) {
+  preco = 129;
+} 
+else if (img % 2 === 0) {
+  preco = 149;
+} 
+else {
+  preco = 179;
+}
+
+/* preencher dados */
 document.getElementById("nome").innerText = nome;
 document.getElementById("desc").innerText = desc;
 document.getElementById("preco").innerText = "por R$ " + preco;
 
+/* imagem */
 document.getElementById("img").src =
 "https://picsum.photos/seed/juliet" + img + "/600/400";
 
+/* whatsapp */
 document.getElementById("whats").href =
 "https://wa.me/5512974040166?text=" +
 encodeURIComponent("Olá! Quero comprar a " + nome + " por R$ " + preco);
