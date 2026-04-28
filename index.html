@@ -39,12 +39,13 @@ header p {
   padding: 20px;
 }
 
-/* CARD */
+/* CARD LINK */
 .card-link {
   text-decoration: none;
   color: inherit;
 }
 
+/* CARD */
 .card {
   background: #161616;
   border-radius: 12px;
@@ -59,7 +60,7 @@ header p {
   box-shadow: 0 10px 20px rgba(255,215,0,0.08);
 }
 
-/* IMG */
+/* IMAGEM */
 .card img {
   width: 100%;
   height: 200px;
@@ -83,6 +84,12 @@ header p {
   color: gold;
   font-weight: bold;
   margin-bottom: 12px;
+}
+
+/* efeito leve */
+.card:hover img {
+  filter: brightness(1.1);
+  transition: 0.3s;
 }
 </style>
 </head>
@@ -123,23 +130,7 @@ const produtos = [
 const grid = document.getElementById("grid");
 
 produtos.forEach((p, i) => {
-
-  let precoBase = 199;
-
-  if (i % 5 === 0) {
-    precoBase = 80;
-  } 
-  else if (i % 4 === 0) {
-    precoBase = 120;
-  } 
-  else if (i % 3 === 0) {
-    precoBase = 160;
-  } 
-  else if (i % 7 === 0) {
-    precoBase = 230;
-  }
-
-  const preco = precoBase;
+  const preco = 80 + (i % 3) * 10;
 
   grid.innerHTML += `
     <a class="card-link" href="produto.html?nome=${encodeURIComponent(p.nome)}&desc=${encodeURIComponent(p.desc)}&img=${i}&preco=${preco}">
